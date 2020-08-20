@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DemoFPT.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a href="@Url.Action("Insert","Dapper")" class="btn btn-primary">Thêm mới</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manufacture</th>
+            <th scope="col">Active</th>
+            <th scope="col">CreatedBy</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Id</th>
+                <th>@item.Name</th>
+                <th>@item.Manufacture</th>
+                <th>@item.Active</th>
+                <th>@item.CreatedBy</th>
+                <th>@item.Description</th>
+                <th>
+                    <a href="@Url.Action("Update", "Dapper", new { id = item.Id})" class="btn btn-primary">Sửa</a>
+                    <a href="@Url.Action("Delete", "Dapper", new { id = item.Id})" class="btn btn-danger">Xóa</a>
+                    <a href="@Url.Action("Details", "Dapper", new { id = item.Id})" class="btn btn-warning">Chi tiết</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Back", "Index", "Home")

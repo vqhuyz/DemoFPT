@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DemoFPTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="DemoFPTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <FunctionImport Name="sp_Delete_Product">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetAll_Products" ReturnType="Collection(DemoFPTModel.sp_GetAll_Products_Result)" />
+    <FunctionImport Name="sp_GetById_Product" ReturnType="Collection(DemoFPTModel.sp_GetById_Product_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Insert_Product">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="manufacture" Mode="In" Type="String" />
+      <Parameter Name="createdby" Mode="In" Type="String" />
+      <Parameter Name="active" Mode="In" Type="Boolean" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="createdat" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Update_Product">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="manufacture" Mode="In" Type="String" />
+      <Parameter Name="createdby" Mode="In" Type="String" />
+      <Parameter Name="active" Mode="In" Type="Boolean" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="updateat" Mode="In" Type="DateTime" />
+      <Parameter Name="updateby" Mode="In" Type="String" />
+      <Parameter Name="deleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_GetAll_Products_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Manufacture" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="CreatedAt" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
+    <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetById_Product_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Manufacture" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="CreatedAt" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
+    <Property Type="String" Name="UpdateBy" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+    <Property Type="Boolean" Name="Active" Nullable="true" />
+  </ComplexType>
+</Schema>
