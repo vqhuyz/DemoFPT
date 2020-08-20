@@ -10,9 +10,26 @@ namespace DemoFPT.Controllers
     public class EntitiesController : Controller
     {
         DemoFPTEntities db = new DemoFPTEntities();
-        public ActionResult Index()
+        public ActionResult Index(string Sort)
         {
             var list = db.Products.ToList();
+            //ViewBag.Id = Sort == "id_decs" ? "id" : "id_decs";
+            if (Sort == "id_desc")
+                ViewBag.Id = "id";
+            else
+                ViewBag.Id = "id_desc";
+            switch (Sort)
+            {
+                case "id_desc":
+                    list = list.OrderByDescending(x => x.Id).ToList();
+                    break;
+                case "id":
+                    list = list.OrderBy(x => x.Id).ToList();
+                    break;
+                default:
+                    list = list.OrderBy(x => x.Id).ToList();
+                    break;
+            }
             return View(list);
         }
 
