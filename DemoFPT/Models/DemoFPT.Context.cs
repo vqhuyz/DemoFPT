@@ -37,7 +37,7 @@ namespace DemoFPT.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Delete_Product", idParameter);
         }
-    
+
         public virtual ObjectResult<sp_GetAll_Products_Result> sp_GetAll_Products()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetAll_Products_Result>("sp_GetAll_Products");

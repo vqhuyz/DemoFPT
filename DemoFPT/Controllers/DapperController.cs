@@ -14,11 +14,13 @@ namespace DemoFPT.Controllers
     {
         private static string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog = DemoFPT; Integrated Security = True";
         // GET: Dapper
-        private static SqlConnection connection = new SqlConnection(connectionString);
         public ActionResult Index()
         {
-            var list = connection.Query<Product>("sp_GetAll_Products", commandType: CommandType.StoredProcedure).ToList();
-            return View(list);
+            using (var connection = new SqlConnection(connectionString))
+            {
+                var list = connection.Query<Product>("sp_GetAll_Products", commandType: CommandType.StoredProcedure).ToList();
+                return View(list);
+            }               
         }
 
         public ActionResult Insert()
@@ -28,26 +30,37 @@ namespace DemoFPT.Controllers
 
         public ActionResult Update(int id)
         {
-            var product = connection.QueryFirstOrDefault<Product>("sp_GetById_Product", new { Id = id }, commandType: CommandType.StoredProcedure);
-            return View(product);
+            using (var connection = new SqlConnection(connectionString))
+            {
+                var product = connection.QueryFirstOrDefault<Product>("sp_GetById_Product", new { Id = id }, commandType: CommandType.StoredProcedure);
+                return View(product);
+            }
         }
 
         public ActionResult Delete(int id)
         {
-            var product = connection.QueryFirstOrDefault<Product>("sp_Delete_Product", new { Id = id }, commandType: CommandType.StoredProcedure);
-            return RedirectToAction("Index");
+            using (var connection = new SqlConnection(connectionString))
+            {
+                var product = connection.QueryFirstOrDefault<Product>("sp_Delete_Product", new { Id = id }, commandType: CommandType.StoredProcedure);
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Details(int id)
         {
-            var product = connection.QueryFirstOrDefault<Product>("sp_GetById_Product", new { Id = id }, commandType: CommandType.StoredProcedure);
-            return View(product);
+            using (var connection = new SqlConnection(connectionString))
+            {
+                var product = connection.QueryFirstOrDefault<Product>("sp_GetById_Product", new { Id = id }, commandType: CommandType.StoredProcedure);
+                return View(product);
+            }
         }
 
         [HttpPost]
         public ActionResult Insert(Product product)
         {
-            var insert = connection.Execute("sp_Create_Product",
+            using (var connection = new SqlConnection(connectionString))
+            {
+                var insert = connection.Execute("sp_Create_Product",
                 new[]
                 {
                         new{product.Name, product.Manufacture, product.CreatedBy, product.Active,
@@ -55,13 +68,16 @@ namespace DemoFPT.Controllers
                 },
                         commandType: CommandType.StoredProcedure
                 );
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public ActionResult Update(Product product)
         {
-            var insert = connection.Execute("sp_Update_Product",
+            using (var connection = new SqlConnection(connectionString))
+            {
+                var insert = connection.Execute("sp_Update_Product",
                 new[]
                 {
                         new{product.Id, product.Name, product.Manufacture, product.CreatedBy, product.Active,
@@ -70,7 +86,8 @@ namespace DemoFPT.Controllers
                         commandType: CommandType.StoredProcedure
                 );
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
         }
     }
 }
