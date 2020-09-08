@@ -156,6 +156,8 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>DemoFPT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductAbstract.cs" />
+    <Compile Include="Models\ProductEx.cs" />
     <Compile Include="Models\sp_GetAll_Products_Result.cs">
       <DependentUpon>DemoFPT.tt</DependentUpon>
     </Compile>

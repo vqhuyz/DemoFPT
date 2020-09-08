@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace DemoFPT.Controllers
 {
     public class EntitiesController : Controller
-    {        
+    {
         public ActionResult Index(string Sort)
         {
             using (var db = new DemoFPTEntities())
@@ -32,7 +32,7 @@ namespace DemoFPT.Controllers
                         break;
                 }
                 return View(list);
-            }                
+            }
         }
 
         public ActionResult Insert()
@@ -42,64 +42,40 @@ namespace DemoFPT.Controllers
 
         public ActionResult Update(int id)
         {
-            using (var db = new DemoFPTEntities())
-            {
-                var product = db.Products.SingleOrDefault(x => x.Id == id);
-                return View(product);
-            }
+            ProductEx productEx = new ProductEx();
+            var product = productEx.GetById(id);
+            return View(product);
         }
 
         public ActionResult Delete(int id)
         {
-            using (var db = new DemoFPTEntities())
-            {
-                var product = db.Products.SingleOrDefault(x => x.Id == id);
-                db.Products.Remove(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            ProductEx productEx = new ProductEx();
+            productEx.Delete(id);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
         {
-            using (var db = new DemoFPTEntities())
-            {
-                var product = db.Products.SingleOrDefault(x => x.Id == id);
-                return View(product);
-            }
+            ProductEx productEx = new ProductEx();
+            var product = productEx.GetById(id);
+            return View(product);
         }
 
         [HttpPost]
         public ActionResult Insert(Product product)
         {
-            using (var db = new DemoFPTEntities())
-            {
-                product.CreatedAt = DateTime.Now;
-                product.UpdateAt = DateTime.Now;
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            ProductEx productEx = new ProductEx();
+            productEx.Insert(product);
+            return RedirectToAction("Index");
+
         }
 
         [HttpPost]
         public ActionResult Update(Product product)
         {
-            using (var db = new DemoFPTEntities())
-            {
-                var _product = db.Products.Find(product.Id);
-                _product.Name = product.Name;
-                _product.Manufacture = product.Manufacture;
-                _product.CreatedBy = product.CreatedBy;
-                _product.UpdateAt = DateTime.Now;
-                _product.UpdateBy = product.UpdateBy;
-                _product.Deleted = product.Deleted;
-                _product.Active = product.Active;
-                _product.Description = product.Description;
-
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            ProductEx productEx = new ProductEx();
+            productEx.Update(product);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Data;
 namespace DemoFPT.Controllers
 {
     public class DapperController : Controller
-    {
+    { 
         private static string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog = DemoFPT; Integrated Security = True";
         // GET: Dapper
         public ActionResult Index()
@@ -60,13 +60,10 @@ namespace DemoFPT.Controllers
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                var insert = connection.Execute("sp_Create_Product",
-                new[]
-                {
-                        new{product.Name, product.Manufacture, product.CreatedBy, product.Active,
-                                product.Description, DateTime.Now},
-                },
-                        commandType: CommandType.StoredProcedure
+                var insert = connection.Execute("sp_Create_Product"
+                        ,new{product.Name, product.Manufacture, product.CreatedBy, product.Active,
+                                product.Description, DateTime.Now}
+                        ,commandType: CommandType.StoredProcedure
                 );
                 return RedirectToAction("Index");
             }
@@ -77,15 +74,11 @@ namespace DemoFPT.Controllers
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                var insert = connection.Execute("sp_Update_Product",
-                new[]
-                {
-                        new{product.Id, product.Name, product.Manufacture, product.CreatedBy, product.Active,
-                                product.Description, DateTime.Now, product.UpdateBy, product.Deleted},
-                },
-                        commandType: CommandType.StoredProcedure
+                var insert = connection.Execute("sp_Update_Product"
+                        ,new{product.Id, product.Name, product.Manufacture, product.CreatedBy, product.Active,
+                                product.Description, DateTime.Now, product.UpdateBy, product.Deleted}
+                        ,commandType: CommandType.StoredProcedure
                 );
-
                 return RedirectToAction("Index");
             }
         }

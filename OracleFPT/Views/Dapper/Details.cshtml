@@ -1,0 +1,66 @@
+﻿@model OracleFPT.Models.Employees
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employees</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NHANVIEN_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONGBAN_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONGBAN_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_DATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Update", "Update", new { id = Model.NHANVIEN_ID }) 
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBL_NHANVIEN">
+    <Key>
+      <PropertyRef Name="NHANVIEN_ID" />
+    </Key>
+    <Property Name="NHANVIEN_ID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="50" />
+    <Property Name="PHONE" Type="char" MaxLength="10" />
+    <Property Name="PHONGBAN_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATE_DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="TBL_PHONGBAN">
+    <Key>
+      <PropertyRef Name="PHONGBAN_ID" />
+    </Key>
+    <Property Name="PHONGBAN_ID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENPHONG" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_NHANVIEN_PHONGBAN">
+    <End Role="TBL_PHONGBAN" Type="Self.TBL_PHONGBAN" Multiplicity="0..1" />
+    <End Role="TBL_NHANVIEN" Type="Self.TBL_NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_PHONGBAN">
+        <PropertyRef Name="PHONGBAN_ID" />
+      </Principal>
+      <Dependent Role="TBL_NHANVIEN">
+        <PropertyRef Name="PHONGBAN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_DELETE_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SYSTEM">
+    <Parameter Name="P_NHANVIEN_ID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_GETALL_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SYSTEM">
+    <Parameter Name="P_NHANVIEN_ID" Type="number" Mode="Out" />
+    <Parameter Name="P_NAME" Type="varchar2" Mode="Out" />
+    <Parameter Name="P_ADDRESS" Type="char" Mode="Out" />
+    <Parameter Name="P_PHONE" Type="varchar2" Mode="Out" />
+    <Parameter Name="P_PHONGBANID" Type="varchar2" Mode="Out" />
+    <Parameter Name="P_CREATE_DATE" Type="date" Mode="Out" />
+  </Function>
+  <Function Name="SP_GETBYID_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SYSTEM">
+    <Parameter Name="P_NHANVIEN_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ADDRESS" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="SP_INSERT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SYSTEM">
+    <Parameter Name="P_NAME" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ADDRESS" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PHONE" Type="char" Mode="In" />
+    <Parameter Name="P_PHONGBAN_ID" Type="number" Mode="In" />
+    <Parameter Name="P_CREATE_DATE" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDATE_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SYSTEM">
+    <Parameter Name="P_NHANVIEN_ID" Type="number" Mode="In" />
+    <Parameter Name="P_NAME" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ADDRESS" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PHONE" Type="char" Mode="In" />
+    <Parameter Name="P_PHONGBAN_ID" Type="number" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="TBL_NHANVIEN" EntityType="Self.TBL_NHANVIEN" Schema="SYSTEM" store:Type="Tables" />
+    <EntitySet Name="TBL_PHONGBAN" EntityType="Self.TBL_PHONGBAN" Schema="SYSTEM" store:Type="Tables" />
+    <AssociationSet Name="FK_NHANVIEN_PHONGBAN" Association="Self.FK_NHANVIEN_PHONGBAN">
+      <End Role="TBL_PHONGBAN" EntitySet="TBL_PHONGBAN" />
+      <End Role="TBL_NHANVIEN" EntitySet="TBL_NHANVIEN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,9 @@
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\bin\Debug\TEST.exe.config
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\bin\Debug\TEST.exe
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\bin\Debug\TEST.pdb
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\obj\Debug\TEST.csprojAssemblyReference.cache
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\obj\Debug\TEST.csproj.CoreCompileInputs.cache
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\obj\Debug\TEST.csproj.CopyComplete
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\obj\Debug\TEST.exe
+C:\Users\HuyNef\Desktop\DemoFPT\TEST\obj\Debug\TEST.pdb

@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.1231
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoFPT", "DemoFPT\DemoFPT.csproj", "{C854C52D-7B93-4CC4-8C9C-920D678E3589}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST", "TEST\TEST.csproj", "{06D7751A-6592-4F6E-AE7D-DA069AEFCDC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleFPT", "OracleFPT\OracleFPT.csproj", "{665F259A-3632-40CD-B652-B1710A13FDB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C854C52D-7B93-4CC4-8C9C-920D678E3589}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C854C52D-7B93-4CC4-8C9C-920D678E3589}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C854C52D-7B93-4CC4-8C9C-920D678E3589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06D7751A-6592-4F6E-AE7D-DA069AEFCDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D7751A-6592-4F6E-AE7D-DA069AEFCDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D7751A-6592-4F6E-AE7D-DA069AEFCDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D7751A-6592-4F6E-AE7D-DA069AEFCDC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{665F259A-3632-40CD-B652-B1710A13FDB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{665F259A-3632-40CD-B652-B1710A13FDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{665F259A-3632-40CD-B652-B1710A13FDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{665F259A-3632-40CD-B652-B1710A13FDB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

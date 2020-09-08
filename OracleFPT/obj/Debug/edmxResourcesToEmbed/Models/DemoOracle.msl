@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FptDemoStoreContainer" CdmEntityContainer="FptEntities">
+    <EntitySetMapping Name="TBL_NHANVIEN">
+      <EntityTypeMapping TypeName="FptDemo.TBL_NHANVIEN">
+        <MappingFragment StoreEntitySet="TBL_NHANVIEN">
+          <ScalarProperty Name="NHANVIEN_ID" ColumnName="NHANVIEN_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="PHONGBAN_ID" ColumnName="PHONGBAN_ID" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_DELETE_NHANVIEN" FunctionName="FptDemo.Store.SP_DELETE_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_GETALL_NHANVIEN" FunctionName="FptDemo.Store.SP_GETALL_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_GETBYID_NHANVIEN" FunctionName="FptDemo.Store.SP_GETBYID_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_NHANVIEN" FunctionName="FptDemo.Store.SP_INSERT_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_NHANVIEN" FunctionName="FptDemo.Store.SP_UPDATE_NHANVIEN" />
+  </EntityContainerMapping>
+</Mapping>

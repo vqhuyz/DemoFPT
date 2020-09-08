@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DemoFPT_Oracle.Models.TBL_NHANVIEN>
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a href="@Url.Action("Insert","Entities")" class="btn btn-primary">Thêm mới</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col">CreatedAt</th>
+            <th scope="col">Id_PhongBan</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.NHANVIEN_ID</th>
+                <th>@item.NAME</th>
+                <th>@item.ADDRESS</th>
+                <th>@item.PHONE</th>
+                <th>@item.CREATE_DATE</th>
+                <th>@item.PHONGBAN_ID</th>
+                <th>
+                    <a href="@Url.Action("Update", "Entities", new { id = item.NHANVIEN_ID})" class="btn btn-primary">Sửa</a>
+                    <a href="@Url.Action("Delete", "Entities", new { id = item.NHANVIEN_ID})" class="btn btn-danger">Xóa</a>
+                    <a href="@Url.Action("Details", "Entities", new { id = item.NHANVIEN_ID})" class="btn btn-warning">Chi tiết</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Back", "Index", "Home")
